@@ -1,0 +1,79 @@
+{
+  "name": "vue-training",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "max",
+    "email": "manh_nguyen_xuan@bita.jp"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint && npm run lint:css",
+    "lint:css": "stylelint \"src/**/*.vue\" --fix"
+  },
+  "dependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "core-js": "^3.27.2",
+    "pinia": "^2.0.30",
+    "uuid": "^9.0.0",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.8",
+    "@vue/cli-plugin-router": "~5.0.8",
+    "@vue/cli-service": "~5.0.8",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "eslint": "^8.34.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.9.0",
+    "fibers": "^5.0.3",
+    "lint-staged": "^13.1.1",
+    "prettier": "^2.8.4",
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0",
+    "sass": "^1.58.0",
+    "sass-loader": "^13.2.0",
+    "stylelint": "^15.1.0",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-scss": "^4.4.0",
+    "vue-eslint-parser": "^9.1.0",
+    "vue-template-compiler": "^2.7.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended",
+      "@vue/prettier",
+      "prettier"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://bitadev.backlog.jp/git/TDVN/vue-training.git"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.{vue,scss}": [
+      "npm run lint:css",
+      "git add"
+    ]
+  }
+}

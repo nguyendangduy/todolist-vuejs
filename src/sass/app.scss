@@ -1,0 +1,207 @@
+@use "_variables";
+
+* {
+  font-family: "Helvetica Neue";
+  font-weight: 100;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.l-todoList {
+  width: 550px;
+  margin: 140px auto 60px;
+  background: variables.$color-fff;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba($color: variables.$color-000, $alpha: 0.2),
+    0 25px 50px 0 rgba($color: variables.$color-000, $alpha: 0.1);
+}
+
+.p-form {
+  position: relative;
+}
+
+.p-title {
+  text-align: center;
+  padding: 30px 0 0;
+  color: rgba($color: variables.$color-af2f2f, $alpha: 0.15);
+  font-size: 100px;
+  position: absolute;
+  top: -230px;
+  width: 100%;
+}
+
+.c-button-toggle {
+  position: absolute;
+  transform: rotate(90deg);
+  padding: 10px 27px 10px 27px;
+  left: -10px;
+  bottom: 11px;
+
+  &::before {
+    content: "❯";
+    font-size: 22px;
+    color: variables.$color-e6e6e6;
+  }
+}
+
+.p-form__field-wrapper {
+  width: 100%;
+  display: inline-flex;
+}
+
+.p-task {
+  border-bottom: 1px solid variables.$color-ededed;
+  font-size: 24px;
+  position: relative;
+
+  &:hover .c-button-remove {
+    display: block;
+  }
+}
+
+.c-checkbox-field {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  width: 50px;
+  cursor: pointer;
+
+  &--hidden {
+    z-index: -1;
+  }
+
+  &[data-check="true"] + .c-task-name {
+    color: variables.$color-d9d9d9;
+    text-decoration: line-through;
+    background-image: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E);
+  }
+}
+
+.c-button-remove {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 15px;
+  width: 45px;
+  font-size: 30px;
+  color: variables.$color-cc9a9a;
+
+  &::after {
+    content: "×";
+  }
+}
+
+.c-button-filter {
+  border-radius: 3px;
+  color: variables.$color-777;
+  font-size: 14px;
+  border: 1px solid transparent;
+
+  &--active {
+    border-color: rgba($color: variables.$color-af2f2f, $alpha: 0.2);
+  }
+}
+
+.c-task-name {
+  transition: color 0.4s;
+  padding: 20px 40px 20px 67px;
+  display: block;
+  background-image: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E);
+  background-repeat: no-repeat;
+  background-position: left 15px;
+  word-break: break-word;
+}
+
+.p-action {
+  color: variables.$color-777;
+  padding: 10px 15px;
+  height: 20px;
+  text-align: center;
+  border-top: 1px solid variables.$color-e6e6e6;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba($color: variables.$color-000, $alpha: 0.2),
+      0 8px 0 -3px variables.$color-f6f6f6,
+      0 9px 1px -3px rgba($color: variables.$color-000, $alpha: 0.2),
+      0 16px 0 -6px variables.$color-f6f6f6,
+      0 17px 2px -6px rgba($color: variables.$color-000, $alpha: 0.2);
+  }
+}
+
+.p-action__task-active {
+  float: left;
+  font-size: 14px;
+}
+
+.p-action__filter {
+  position: absolute;
+  right: 0;
+  left: 0;
+}
+
+.p-action__clear-completed {
+  float: right;
+  position: relative;
+}
+
+.c-button-clear {
+  background-color: transparent;
+  border: none;
+  color: variables.$color-777;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.c-text-field {
+  &--form {
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    border: none;
+    padding: 10px 10px 10px 50px;
+    background: rgba($color: variables.$color-000, $alpha: 0.003);
+    box-shadow: inset 0 -2px 1px rgba($color: variables.$color-000, $alpha: 0.03);
+
+    &::placeholder {
+      color: variables.$color-ccc;
+      font-style: italic;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &--task {
+    position: relative;
+    font-size: 24px;
+    border: 1px solid variables.$color-999;
+    box-shadow: inset 0 -1px 5px 0 rgba($color: variables.$color-000, $alpha:
+          0.2);
+    box-sizing: border-box;
+    width: calc(100% - 50px);
+    padding: 12px 16px;
+    margin: 0 0 0 50px;
+    height: 68px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
